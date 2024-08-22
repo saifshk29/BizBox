@@ -48,6 +48,7 @@ const People = () => {
     
   return people.length > 0 ? (
     <div className="h-screen w-screen px-[5%]">
+        
         <div className="w-full py-5  h-[10vh] flex items-center text-zinc-400">
             <div className="font-semibold text-2xl flex items-baseline gap-2">
                 <i 
@@ -62,12 +63,12 @@ const People = () => {
             
         </div>
         <InfiniteScroll
-        dataLength={people.length}
-        next={getPeople}
-        hasMore={hasMore}
-        loader={
-            <h1>Loading...</h1>
-        }
+            dataLength={people.length}
+            next={getPeople()}
+            hasMore={hasMore}
+            loader={
+                <h1>Loading...</h1>
+            }
         >
             <Cards data={people}/>
         </InfiniteScroll>

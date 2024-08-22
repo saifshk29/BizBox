@@ -40,7 +40,7 @@ const SideNav = () => {
                 <i class="ri-information-2-fill mr-2"></i>
                 About
             </Link>
-            <Link className="p-5 rounded-lg hover:bg-[#6556CD] hover:text-white duration-300">
+            <Link to="/ContactUs" className="p-5 rounded-lg hover:bg-[#6556CD] hover:text-white duration-300">
                 <i class="ri-phone-fill mr-2"></i>
                 Contact Us
             </Link>

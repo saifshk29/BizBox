@@ -9,8 +9,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from './Loading.jsx';
 
 const Tvshow = () => {
+    const media_type ="tv";
     const navigate = useNavigate();
-    document.title = "BizBox | Tv Show's"
+    document.title = "BizBox | Tv Shows"
     const [tvshow, setTvshow] = useState([]);
     const [category, setCategory] = useState("on_the_air");
     const [page, setPage] = useState(1);
@@ -71,7 +72,7 @@ const Tvshow = () => {
             <h1>Loading...</h1>
         }
         >
-            <Cards data={tvshow}/>
+            <Cards data={tvshow} media_type={media_type}/>
         </InfiniteScroll>
         
     </div>

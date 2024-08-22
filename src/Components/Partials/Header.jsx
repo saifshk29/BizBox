@@ -21,7 +21,9 @@ const Header = ({data}) => {
         </h1>
         <p className="w-[70%] mt-3 text-lg">
             {data.overview.slice(0,200)}...
-            <Link className="text-blue-700 mt-3">
+            <Link 
+            to={`/${data.media_type}/details/${data.id}`} 
+            className="text-blue-700 mt-3">
             more</Link>
         </p>
         <div className="flex items-center gap-[5px] mt-3">
@@ -30,11 +32,15 @@ const Header = ({data}) => {
             <i class="ri-album-fill text-[#EAB308]"></i>
             {data.media_type.toUpperCase()}
         </div>
-        <Link className="
-        py-4 px-2 rounded-lg mt-5 bg-[#6556CD]
-        ">
-            Watch Trailer
-        </Link>
+        <button  className="mt-10 mb-5 self-start">
+                <a href={`https://www.youtube.com/results?search_query=${data.name ||
+                        data.title ||
+                        data.original_name ||
+                        data.original_title} trailer`} target="_blank" className="bg-[#6556CD] px-2 py-4 rounded-lg text-lg  ">
+                    <i className="ri-play-fill "></i>
+                    Play Trailer
+                </a>
+        </button>
     </div>
   )
 }

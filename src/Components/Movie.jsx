@@ -9,11 +9,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from './Loading.jsx';    
 
 const Movie = () => {
+    const media_type = "movie";
     const navigate = useNavigate();
     document.title = "BizBox | Movies"
     const [movies, setMovies] = useState([]);
-    const [category, setCategory] = useState("all");
-    const [duration, setDuration] = useState("week");
+    const [category, setCategory] = useState("all");    
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const getMovie = async ()=>{
@@ -72,7 +72,7 @@ const Movie = () => {
             <h1>Loading...</h1>
         }
         >
-            <Cards data={movies}/>
+            <Cards data={movies} media_type={media_type}/>
         </InfiniteScroll>
         
     </div>

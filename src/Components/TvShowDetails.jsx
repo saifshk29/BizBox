@@ -1,34 +1,31 @@
-import React, { useEffect } from 'react'
-import {useDispatch,useSelector} from "react-redux";
-import { asyncloadmovie} from '../store/actions/MovieActions';
-import { removemovie } from '../store/reducers/movieSlice.jsx';
-import HorCards from './Partials/HorCards.jsx';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncloadtv, removetv } from "../store/actions/tvActions";
 
-import{
+import {
     Link,
     Outlet,
     useLocation,
     useNavigate,
     useParams,
 } from "react-router-dom";
-import Cards from "./Partials/Cards.jsx";
-import Loading from "./Loading.jsx"
+import HorCards from "./Partials/HorCards";
+import Loading from "./Loading";
 
-const MovieDetails = () => {
-    const media_type = "movie";
-    document.title = "Movie | Movie Detais"
+const TvShowDetails = () => {
+    document.title="BizBox | Tv Shows"
+    const media_type ="tv";
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const { id } = useParams();
-    const { info } = useSelector((state) => state.movie);
+    const { info } = useSelector((state) => state.tv);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(asyncloadmovie(id));
+        dispatch(asyncloadtv(id));
         return () => {
-            dispatch(removemovie());
+            dispatch(removetv());
         };
-    }, [id]);  
-    
+    }, [id]);
   return info ? (
     <div className="text-white w-full h-full">
         {/* MOVIE DETAILS */}
@@ -72,16 +69,14 @@ const MovieDetails = () => {
                                     info.detail.original_title}
                             </h1>
                             <span>
-                                ({info.detail.release_date.split("-")[0]})
+                                ({info.detail.first_air_date.split("-")[0]})
                             </span>
                         </div>
                         <div className="flex items-baseline gap-2 mt-5">
                             <p>User Rating: {Math.round(info.detail.vote_average * 10) / 10} </p>
                             <p> | </p>
-                            <p>Release Date : {info.detail.release_date}</p>
-                            <p>|</p>
-                            <p>{info.detail.runtime}min</p>
-                            <p>|</p>
+                            <p>Air Date : {info.detail.first_air_date}</p>
+                            <p>|</p>    
                             <p>{info.detail.genres.map((g) => g.name).join(" , ")}</p>
                         </div>
                         <div className="mt-5">
@@ -91,6 +86,7 @@ const MovieDetails = () => {
                                     <p className="text-xl w-[75%]">{info.detail.overview}</p>
                                 ) : <p className="text-xl w-[75%]">No overview</p>
                             }
+                            
                         </div>
                         <div className="mt-5">
                             <h1 className="text-2xl font-bold mb-5">Language's: </h1>
@@ -98,11 +94,14 @@ const MovieDetails = () => {
                                 {info.translations.join(", ").slice(0,100)} ...
                             </p>
                         </div>
+                        <div className="mt-5">
+                            <h1 className="text-2xl font-bold">Number Of Season's : <span className="text-lg font-normal">{info.detail.seasons.length}</span></h1>
+                        </div>
                         <button  className="mt-10 mb-5 self-start">
                             <a href={`https://www.youtube.com/results?search_query=${info.detail.name ||
                                     info.detail.title ||
                                     info.detail.original_name ||
-                                    info.detail.original_title} trailer`} target="_blank" className="bg-[#6556CD] px-2 py-4 rounded-lg text-lg ">
+                                    info.detail.original_title} trailer`} target="_blank" className="bg-[#6556CD] px-2 py-4 rounded-lg text-lg  ">
                                 <i className="ri-play-fill "></i>
                                 Play Trailer
                             </a>
@@ -172,4 +171,4 @@ const MovieDetails = () => {
   ) : <Loading/>
 }
 
-export default MovieDetails
+export default TvShowDetails

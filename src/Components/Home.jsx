@@ -59,7 +59,7 @@ const getTrending = async ()=>{
               }
             }/>
           </div>
-          <HorizontalCard tren={trending} />
+          <HorizontalCard data={trending} />
         </div>
     </>
   ) : (<Loading/>)

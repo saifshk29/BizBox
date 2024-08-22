@@ -2,13 +2,16 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import '../../index.css'
 
-const HorizontalCard = ({ tren }) => {
-    console.log(tren)
+const HorizontalCard = ({ data }) => {
+    
     return (
-        <div className="w-full h-full flex flex-wrap gap-5 p-5 ">
+        <div 
+        
+        className="w-full h-full flex flex-wrap gap-5 p-5 ">
             {
-                tren.map((currentElement, index) => (
-                    <div
+                data.map((currentElement, index) => (
+                    <Link
+                        to={`/movie/details/${currentElement.id}`}
                         key={index} className="w-[15%] cursor-pointer shadow-lg  card-container h-[35vh] group bg-zinc-900 flex flex-col justify-between items-start relative">
                         <img src={
                             currentElement.poster_path || currentElement.backdrop_path || currentElement.profile_path
@@ -47,7 +50,7 @@ const HorizontalCard = ({ tren }) => {
                                 <span className="text-blue-500">more</span>
                             </p>
 
-                    </div>
+                    </Link>
                 ))
             }
 

@@ -7,6 +7,8 @@
   import Tvshow from './Components/Tvshow';
   import People from './Components/People';
   import MovieDetails from './Components/MovieDetails';
+  import TvShowDetails from './Components/TvShowDetails';
+import ContactUS from './Components/ContactUS';
 
   function App() {
     // primary- #1F1E24 
@@ -22,6 +24,8 @@
             <Route path='/tvshows' element={<Tvshow/>}></Route>
             <Route path='/people' element={<People/>}></Route>
             <Route path="/movie/details/:id" element={<MovieDetails/>}></Route>
+            <Route path="/tv/details/:id" element={<TvShowDetails/>}></Route>
+            <Route path='/ContactUs' element={<ContactUS/>}></Route>
           </Routes>
         </div>
       

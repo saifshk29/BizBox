@@ -43,6 +43,7 @@ const TopNav = () => {
             {
                 search.map((currentElement,index)=>(
                     <Link 
+                    to={`/${currentElement.media_type}/details/${currentElement.id}`}
                     key={index}
                     className="w-full relative z-10 h-[10vh] bg-zinc-200 flex p-10 justify-start items-center border-b-2 border-zinc-100
                     hover:bg-zinc-600 font-semibold hover:text-zinc-300 ">
